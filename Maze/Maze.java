@@ -1,19 +1,17 @@
 package Maze;
-
 import java.util.Scanner;
-
 public class Maze {
 	private int row;
 	private int col;
 	private int [][] grid = new int [row][col];
 	public int [][] trace;
-	
 	public void position(int row, int col){
 		for(int i =0;i<row;i++){
 			for(int j =0;j<col;j++){
 				System.out.println(grid[i][j]+"");
 				if(grid[i][j]==1){
 					//obstacle
+					
 				}
 				else if(grid[i][j]==0){
 					Cell();

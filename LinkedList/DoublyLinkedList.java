@@ -1,15 +1,11 @@
 package LinkedList;
-
 public class DoublyLinkedList {
 	static node head = null;
 	static int size = 0;
-	
 	class node{
 		int elem;
 		node next;
-		node prev;
-		
-	}
+		node prev; }
 	public void addFirst(int a){
 		if(head != null){
 			node k = new node();
@@ -17,54 +13,36 @@ public class DoublyLinkedList {
 			head.prev =k;//앞에 노드를 가르킴 . 
 			k.next =head;
 			head = k;
-			size++;
-		}
+			size++; }
 		else{
 			node k = new node();
 			k.elem = a; 
 			k.next =head;
 			head = k;
-			size++;
-			
-		}
+			size++; }
 	}
 	public void addLast(int b){
 		node n = new node();
 		n.elem = b;
-		
 		node daeun = head;//last node 찾을 변수. 
-		
 		while(daeun.next != null)//last node가 null값이면 찾았다!!! 
 			daeun = daeun.next;//last node에 daeun으로 표시. 
 		daeun.next = n;//daeun에 다음 새로운 노드를 이어줌. 
 		n.prev=daeun;//서로 가르킨다. 
-		
 		n.next = null;//last node가 다시 null값을 가리키게 해서 반복가능하게 함. 
-		size++;
-	}
-	public int getFirst(){
-		//get element
-		
-		return head.elem;
-		
-		
-	}
+		size++; }
+	public int getFirst(){ //get element
+		return head.elem; }
 	public int get(int index){
 		node daeun2 = head;
-		
 		for(int i=0;i <index ;i++){
-			daeun2 = daeun2.next;
-			
-		}
-	
+			daeun2 = daeun2.next; }
 		return daeun2.elem;
 	}
 	public int getLast(){
-		
 		node daeun3 = head;
 		while(daeun3.next != null){
-			daeun3 = daeun3.next;
-		}
+			daeun3 = daeun3.next; }
 		return daeun3.elem;
 	}
 	public void insert(int index, int elem){
@@ -72,15 +50,11 @@ public class DoublyLinkedList {
 			addFirst(elem);
 			return;
 		}//index가 0일 경우엔 앞에 넣어줘야 함으로 addFirst함수에서 처리. 
-		
 		node init = new node();
 		node daeun4 = head;
-		
 		init.elem = elem;
-		
 		for(int i=0;i<index-1;i++){
 			daeun4 = daeun4.next;
-			
 		}
 		init.next = daeun4.next;//새로 만든 노드를 다음 노드와 연결. 
 		init.prev= daeun4;//서로 가르킴. 
@@ -88,46 +62,32 @@ public class DoublyLinkedList {
 		size++;
 	}
 	public int remove(int index){
-
 		int delNum;//지워질 숫자; 
 		if(index==size-1){
 			node daeun5 = head;
-			
 			for(int i=0;i<index-1;i++){
 				daeun5 = daeun5.next;
 			}
-			
 			delNum = daeun5.next.elem;
 			daeun5.next = null;
 			size--;
 			return delNum;
 		}
-		
 		if(index != 0){
 			node daeun5 = head;
-			
-			
 			for(int i=0;i<index-1;i++){
-				daeun5 = daeun5.next;
-			}
+				daeun5 = daeun5.next; }
 			delNum = daeun5.next.elem;
 			daeun5.next=daeun5.next.next;
-			daeun5.next.next.prev = daeun5;
-			
-		}
+			daeun5.next.next.prev = daeun5; }
 		else{
 			delNum = head.elem;
-			head = head.next;
-		}
+			head = head.next; }
 		size--;
 		return delNum;
 	}
 	public int size(){
-		return size;
-	}
-	
-	
-
+		return size; }
 	public static void main(String[] args) {
 		DoublyLinkedList list = new DoublyLinkedList();
 		System.out.println("AddFirst: 10"); 
@@ -144,14 +104,11 @@ public class DoublyLinkedList {
 		list.addFirst(60); 
 		System.out.println("AddFirst: 70"); 
 		list.addFirst(70);
-		
 		node daeun0 = head;
 		for (int i=0;i<size;i++) {
 			System.out.print(daeun0.elem+" ");
-			daeun0 = daeun0.next;
-		}
+			daeun0 = daeun0.next; }
 		System.out.println("");
-		
 		System.out.println("Insert[0]: 80"); 
 		list.insert(0, 80); 
 		System.out.println("Insert[0]: 90"); 
@@ -160,27 +117,18 @@ public class DoublyLinkedList {
 		list.insert(5, 100); 
 		System.out.println("Insert[9]: 110"); 
 		list.insert(9, 110);
-
-			
-			daeun0 = head;
-			for (int i=0;i<size;i++) {
-				System.out.print(daeun0.elem+" ");
-				daeun0 = daeun0.next;
-			}
-			System.out.println("");
-			
-			System.out.println("Remove: " + list.remove(0)); 
-			System.out.println("Remove: " + list.remove(0)); 
-			System.out.println("Remove: " + list.remove(8)); 
-			System.out.println("Remove: " + list.remove(5));
-			
-			daeun0 = head;
-			for (int i=0;i<size;i++) {
-				System.out.print(daeun0.elem+" ");
-				daeun0 = daeun0.next;
-			}
-		
-
+		daeun0 = head;
+		for (int i=0;i<size;i++) {
+			System.out.print(daeun0.elem+" ");
+			daeun0 = daeun0.next; }
+		System.out.println("");
+		System.out.println("Remove: " + list.remove(0)); 
+		System.out.println("Remove: " + list.remove(0)); 
+		System.out.println("Remove: " + list.remove(8)); 
+		System.out.println("Remove: " + list.remove(5));
+		daeun0 = head;
+		for (int i=0;i<size;i++) {
+			System.out.print(daeun0.elem+" ");
+			daeun0 = daeun0.next; }
 	}
-
 }
